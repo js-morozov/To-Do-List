@@ -8,6 +8,45 @@
             <span>To Do Manager</span>
           </a>
         </div>
+        <nav class="menu menu--divider">
+          <li class="menu__item">
+            <a href="#" class="menu__link">
+              <i data-feather="grid" class="menu__icon"></i>
+              <span class="menu__text">All Tasks</span>
+              <span class="menu__count">24</span>
+            </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link">
+              <i data-feather="star" class="menu__icon"></i>
+              <span class="menu__text">Starred</span>
+              <span class="menu__count"></span>
+            </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link">
+              <i data-feather="alert-circle" class="menu__icon"></i>
+              <span class="menu__text">Important</span>
+              <span class="menu__count">1</span>
+            </a>
+          </li>
+        </nav>
+        <nav class="menu">
+          <li class="menu__item">
+            <a href="#" class="menu__link">
+              <i data-feather="check-circle" class="menu__icon"></i>
+              <span class="menu__text">Completed</span>
+              <span class="menu__count">7</span>
+            </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link">
+              <i data-feather="trash-2" class="menu__icon"></i>
+              <span class="menu__text">Deleted</span>
+              <span class="menu__count">16</span>
+            </a>
+          </li>
+        </nav>
       </aside>
       <section class="contentbar">
         <div class="contentbar__header">
@@ -20,15 +59,13 @@
 </template>
 
 <script>
-import "reset-css";
-
 export default {
   name: "App",
 };
 </script>
 
 <style lang="scss">
-body {
+#app {
   background: #f9f9fb;
   padding: 24px;
 }
@@ -36,7 +73,7 @@ body {
   display: flex;
 }
 .sidebar {
-  width: 300px;
+  width: 288px;
   background: #ffffff;
   box-shadow: 0px 1px 4px rgba(205, 209, 212, 0.64);
   border-radius: 8px;
@@ -90,6 +127,51 @@ body {
   background: #ffffff url(./assets/images/search.svg) 16px center no-repeat;
   &:focus {
     outline: none;
+  }
+}
+
+.menu {
+  &__item {
+    margin-bottom: 4px;
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    &:hover {
+      background: linear-gradient(
+        90deg,
+        rgba(147, 120, 255, 0.15) 1.31%,
+        rgba(249, 249, 251, 0) 99.94%
+      );
+      box-shadow: inset 4px 0px 0px #9378ff;
+      .menu__icon {
+        color: #9378ff;
+      }
+    }
+  }
+  &__icon {
+    color: #47415e;
+    margin-left: 24px;
+  }
+  &__text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #47415e;
+    font-weight: 500;
+    padding-left: 12px;
+  }
+  &__count {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #47415e;
+    padding-right: 24px;
+    margin-left: auto;
+  }
+  &--divider {
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e9e9e9;
   }
 }
 </style>
