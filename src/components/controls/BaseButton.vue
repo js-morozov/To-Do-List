@@ -1,11 +1,13 @@
 <template>
-  <button class="button">Add Task</button>
+  <button class="button">
+    <i data-feather="plus" class="button__icon"></i> Add Task
+  </button>
 </template>
 
 <script>
 export default {
   name: "BaseButton",
-  props: {}
+  props: {},
 };
 </script>
 
@@ -32,5 +34,8 @@ export default {
   border: none;
   outline: none;
   user-select: none;
+  &__icon {
+    margin-right: 8px;
+  }
 }
 </style>

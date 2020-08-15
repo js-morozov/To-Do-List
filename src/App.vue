@@ -32,21 +32,74 @@
           </li>
         </nav>
         <nav class="menu">
-          <li class="menu__item">
-            <a href="#" class="menu__link">
-              <i data-feather="check-circle" class="menu__icon"></i>
-              <span class="menu__text">Completed</span>
-              <span class="menu__count">7</span>
-            </a>
-          </li>
-          <li class="menu__item">
-            <a href="#" class="menu__link">
-              <i data-feather="trash-2" class="menu__icon"></i>
-              <span class="menu__text">Deleted</span>
-              <span class="menu__count">16</span>
-            </a>
-          </li>
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a href="#" class="menu__link">
+                <i data-feather="check-circle" class="menu__icon"></i>
+                <span class="menu__text">Completed</span>
+                <span class="menu__count">7</span>
+              </a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">
+                <i data-feather="trash-2" class="menu__icon"></i>
+                <span class="menu__text">Deleted</span>
+                <span class="menu__count">16</span>
+              </a>
+            </li>
+          </ul>
         </nav>
+        <div class="category">
+          <div class="category__add">
+            <span class="category__add-title">Categories</span>
+            <button class="category__button">
+              <i data-feather="plus" class="category__button-icon"></i>
+            </button>
+          </div>
+          <nav class="category-menu">
+            <ul class="category-menu__list">
+              <li class="category-menu__item">
+                <a href="#" class="category-menu__link">
+                  <span class="category-menu__label category-menu__label--blue"></span>
+                  <span class="category-menu__text">Work</span>
+                  <span class="category__button category-menu__button">
+                    <i data-feather="more-horizontal" class="category__button-icon"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="category-menu__item">
+                <a href="#" class="category-menu__link">
+                  <span class="category-menu__label category-menu__label--orange"></span>
+                  <span class="category-menu__text">Personal</span>
+                  <span class="category__button category-menu__button">
+                    <i data-feather="more-horizontal" class="category__button-icon"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="category-menu__item">
+                <a href="#" class="category-menu__link">
+                  <span class="category-menu__label category-menu__label--red"></span>
+                  <span class="category-menu__text">Shopping</span>
+                  <span class="category__button category-menu__button">
+                    <i data-feather="more-horizontal" class="category__button-icon"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="category-menu__item">
+                <a href="#" class="category-menu__link">
+                  <span class="category-menu__label category-menu__label--green"></span>
+                  <span class="category-menu__text">Education</span>
+                  <span class="category__button category-menu__button">
+                    <i data-feather="more-horizontal" class="category__button-icon"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="flex-center">
+          <base-button />
+        </div>
       </aside>
       <section class="contentbar">
         <div class="contentbar__header">
@@ -59,8 +112,13 @@
 </template>
 
 <script>
+import BaseButton from "@/components/controls/BaseButton";
+
 export default {
   name: "App",
+  components: {
+    BaseButton,
+  },
 };
 </script>
 
@@ -78,6 +136,7 @@ export default {
   box-shadow: 0px 1px 4px rgba(205, 209, 212, 0.64);
   border-radius: 8px;
   margin-right: 32px;
+  padding-bottom: 32px;
   &__header {
     display: flex;
     align-items: center;
@@ -173,5 +232,98 @@ export default {
     margin-bottom: 8px;
     border-bottom: 1px solid #e9e9e9;
   }
+}
+
+.category {
+  padding: 20px 0 16px;
+  &__add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px 4px 24px;
+    &-title {
+      font-size: 12px;
+      line-height: 1.4;
+      color: #808080;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  }
+  &__button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    user-select: none;
+    &:focus {
+      outline: none;
+    }
+    &-icon {
+      font-size: 24px;
+      color: #b3b3b3;
+    }
+  }
+
+  &-menu {
+    &__list {
+    }
+    &__item {
+    }
+    &__link {
+      display: flex;
+      align-items: center;
+      padding: 8px 24px 8px 30px;
+      &:hover {
+        background-color: #f9f9fb;
+        .category-menu__button {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    &__label {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 18px;
+      &--blue {
+        background-color: #007eff;
+      }
+      &--orange {
+        background-color: #faa948;
+      }
+      &--red {
+        background-color: #ff5b5b;
+      }
+      &--green {
+        background-color: #15b371;
+      }
+    }
+    &__text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #47415e;
+      font-weight: 500;
+    }
+    &__button {
+      opacity: 0;
+      visibility: hidden;
+      margin-left: auto;
+      transition: all ease-in 0.2s;
+    }
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
