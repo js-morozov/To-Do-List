@@ -106,6 +106,111 @@
           <h1 class="pagetitle">All Tasks</h1>
           <input type="text" class="search" placeholder="Search..." />
         </div>
+        <div class="table">
+          <div class="table__header">
+            <div class="table__row">
+              <div class="table__th">&nbsp;</div>
+              <div class="table__th">Task</div>
+              <div class="table__th">Categories</div>
+              <div class="table__th">Actions</div>
+            </div>
+          </div>
+          <div class="table__body">
+            <div class="table__row">
+              <div class="table__td">
+                <base-checkbox />
+              </div>
+              <div class="table__td">
+                <p class="task-title">Task title will be placed here span</p>
+                <p class="task-date">24 April 2020</p>
+              </div>
+              <div class="table__td">
+                <chip text="Shopping" color="danger" />
+              </div>
+              <div class="table__td">
+                <i data-feather="edit"></i>
+                <i data-feather="more-vertical"></i>
+              </div>
+            </div>
+            <div class="table__row">
+              <div class="table__td">
+                <base-checkbox />
+              </div>
+              <div class="table__td">
+                <p class="task-title">Sagittis consequat nec in vitae et libero</p>
+                <p class="task-date">24 April 2020</p>
+              </div>
+              <div class="table__td">
+                <div class="chip-box">
+                  <chip text="Personal" class="chip-box__item" color="warning" />
+                  <chip text="Education" color="success" />
+                </div>
+              </div>
+              <div class="table__td">
+                <i data-feather="edit"></i>
+                <i data-feather="more-vertical"></i>
+              </div>
+            </div>
+            <div class="table__row">
+              <div class="table__td">
+                <base-checkbox />
+              </div>
+              <div class="table__td">
+                <p class="task-title">Velit vestibulum mi integer sed natoque</p>
+                <p class="task-date">24 April 2020</p>
+              </div>
+              <div class="table__td">
+                <div class="chip-box">
+                  <chip text="Work" class="chip-box__item" color="primary" />
+                  <chip text="Shopping" class="danger" />
+                </div>
+              </div>
+              <div class="table__td">
+                <i data-feather="edit"></i>
+                <i data-feather="more-vertical"></i>
+              </div>
+            </div>
+            <div class="table__row">
+              <div class="table__td">
+                <base-checkbox />
+              </div>
+              <div class="table__td">
+                <p class="task-title">A quis bibendum nullam facilisis ipsum</p>
+                <p class="task-date">24 April 2020</p>
+              </div>
+              <div class="table__td">
+                <div class="chip-box">
+                  <chip text="Personal" class="chip-box__item" color="warning" />
+                  <chip text="Shopping" class="chip-box__item" color="danger" />
+                  <chip text="Education" class="success" />
+                </div>
+              </div>
+              <div class="table__td">
+                <i data-feather="edit"></i>
+                <i data-feather="more-vertical"></i>
+              </div>
+            </div>
+            <div class="table__row">
+              <div class="table__td">
+                <base-checkbox />
+              </div>
+              <div class="table__td">
+                <p class="task-title">Ipsum viverra ut blandit pharetra vel site...</p>
+                <p class="task-date">24 April 2020</p>
+              </div>
+              <div class="table__td">
+                <div class="chip-box">
+                  <chip text="Work" class="chip-box__item" color="primary" />
+                  <chip text="Shopping" color="danger" />
+                </div>
+              </div>
+              <div class="table__td">
+                <i data-feather="edit"></i>
+                <i data-feather="more-vertical"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </div>
@@ -113,11 +218,15 @@
 
 <script>
 import BaseButton from "@/components/controls/BaseButton";
+import BaseCheckbox from "@/components/controls/BaseCheckbox";
+import Chip from "@/components/controls/Chip";
 
 export default {
   name: "App",
   components: {
     BaseButton,
+    BaseCheckbox,
+    Chip,
   },
 };
 </script>
@@ -325,5 +434,68 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.table {
+  background: #ffffff;
+  &__row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #e9e9e9;
+    transition: all ease-in 0.2s;
+    &:hover {
+      box-shadow: 0px -5.22px 22.42px rgba(147, 120, 255, 0.0603),
+        0px 22.3363px 17.869px rgba(147, 120, 255, 0.0417275),
+        0px 12.5216px 10.0172px rgba(147, 120, 255, 0.035),
+        0px 6.6501px 5.32008px rgba(147, 120, 255, 0.0282725),
+        0px 2.76726px 2.21381px rgba(147, 120, 255, 0.0196802);
+    }
+  }
+  &__th {
+    font-size: 12px;
+    line-height: 1.2;
+    color: #808080;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  &__td {
+    flex-shrink: 0;
+  }
+  &__th,
+  &__td {
+    &:first-child {
+      width: 30px;
+    }
+    &:nth-child(2) {
+      width: 40%;
+    }
+    &:nth-child(3) {
+      flex-grow: 1;
+    }
+    &:last-child {
+      align-self: center;
+    }
+  }
+}
+
+.task-title {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #120e21;
+  font-weight: bold;
+}
+.task-date {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #808080;
+}
+
+.chip-box {
+  display: flex;
+  &__item {
+    margin-right: 8px;
+  }
 }
 </style>
